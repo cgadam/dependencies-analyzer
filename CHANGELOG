@@ -1,5 +1,5 @@
 v0.0.1:
-  Date: 2016-XX-XX
+  Date: 2016-07-28
   Changes:
     - First release. Includes the following by-default resolvers:
       * PathResolver
