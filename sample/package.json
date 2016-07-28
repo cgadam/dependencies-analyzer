@@ -1,0 +1,11 @@
+{
+  "name": "a-sample",
+  "version": "1.0.0",
+  "description": "A sample project for dependencies-analyzer",
+  "main": "index.js",
+  "author": "Christian Adam",
+  "dependencies": {
+    "pokemon-cli": "*",
+    "node-core-module-names": "*"
+  }
+}

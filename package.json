@@ -1,0 +1,38 @@
+{
+  "name": "dependencies-analyzer",
+  "version": "0.0.1",
+  "description": "A module for checking node dependencies transitively",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cgadam/dependencies-analyzer.git"
+  },
+  "author": {
+    "name": "Christian Adam",
+    "email": "christian.g.adam@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "node.js",
+    "dependency",
+    "dependencies",
+    "analyzer",
+    "analysis",
+    "transitive",
+    "tree",
+    "optimization"
+  ],
+  "dependencies": {
+    "commander": "2.9.0",
+    "node-core-module-names": "*",
+    "strip-comments": "*"
+  },
+  "bin": {
+    "dep-analysis": "./bin/program.js"
+  },
+  "bugs": {
+    "url": "https://github.com/cgadam/dependencies-analyzer/issues"
+  },
+  "homepage": "https://github.com/cgadam/dependencies-analyzer"
+}

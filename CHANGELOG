@@ -1,0 +1,7 @@
+v0.0.1:
+  Date: 2016-XX-XX
+  Changes:
+    - First release. Includes the following by-default resolvers:
+      * PathResolver
+      * NodeResolver
+        
