@@ -1,15 +1,15 @@
 # Dependency Analyzer
-After coding enough in a node.js project you might end up asking yourself: *are all the **dependencies** defined in my **package.json** actually being **used in my project***? 
+After coding enough in a node.js project you might end up asking yourself: _are all the **dependencies** defined in my **package.json** actually being **used in my project**_? 
 
-The truth is that *we always add dependencies* (otherwise the code would not work), but, *do we always **remove** them when they're not needed anymore?* If you're 
+The truth is that *we always add dependencies* (otherwise the code would not work), but, _do we always **remove** them when they're not needed anymore?_ If you're 
 disciplined enough you might do it but you can't be accountable for the other *N developers* working in your same project!. The thing is that there's nothing preventing us 
 from having a dependency defined and not being used: meaning, **the code will still work**.
 
-The other way around, although it's less likely to happen, is also valid. *Do you have all the **npm dependencies** you need to have declared in your **package.json**?*
+The other way around, although it's less likely to happen, is also valid. _Do you have all the **npm dependencies** you need to have declared in your **package.json**?_
 The answer will come to light during the execution of your program. Well, **as long as the code is executed**, right?
 
-This dependency analyzer *is aimed to check consistency between the **"definition of dependencies"** vs **"their real usage in the source code"** and provide useful 
-information for you to take further actions*. It's basically a static analysis.
+This dependency analyzer _is aimed to check consistency between the **"definition of dependencies"** vs **"their real usage in the source code"** and provide useful 
+information for you to take further actions_. It's basically a static analysis.
 
 ## How it works
 There are 3 essential things to consider for the analysis:
@@ -115,6 +115,7 @@ If you run this:
     
 You'll get this result:    
 
+```javascript
     [
       {
         "names_": [
@@ -192,10 +193,12 @@ You'll get this result:
         "isCore_": true
       }
     ]
+```
 
   Let's analyze each field one by one:
   (Let's take this one as an example)
   
+```javascript
       {
         "names_": [
           "node-core-module-names"
@@ -207,6 +210,7 @@ You'll get this result:
         "requiredNumber_": 1,
         "isCore_": false
       }
+```
   
   * __Names__: you might find the same dependency being called in different ways in the code (each way is probably understood by different resolvers) . As long as the dependency is solved (no matter which resolver solved it) to the same resolved value then we're always talking about the same dependency. The different "names" used to reference this dependency are added to this array.
   

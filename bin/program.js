@@ -43,7 +43,7 @@ var program = require('commander'),
 program.allowUnknownOption();
 
 var DependencyAnalyzer = require('..').DependencyAnalyzer,
-  BaseResolver = require('..').BaseResolver;
+  BaseResolver = require('..').Resolvers.BaseResolver;
 
 var version = '0.0.1';
 
@@ -120,28 +120,24 @@ try {
   });
 
   if (!program.resolvers) {
-    /* REMEMBER THAT RESOLVERS ORDER MATTERS */
     resolvers = [
-    path.resolve(__dirname, '../lib/resolvers/path-resolver.js'),
-    path.resolve(__dirname, '../lib/resolvers/node-resolver.js')
-  ];
+      new (require('..').Resolvers.PathResolver)(program),
+      new (require('..').Resolvers.NodeResolver)(program),
+    ];
   } else {
     resolvers = getFilesList(program.resolvers, {
       errorMsg: 'Resolvers list should be a list of paths to the resolver files: ' +
         './resolverA.js,../folder/resolverB.js'
+    }).map(function (resolverPath) {
+      var loadPath = path.resolve(path.join(path.dirname(resolverPath), path.basename(resolverPath, path.extname(resolverPath)))),
+        ResolverModule = require(loadPath);
+      /* 
+         THE PROGRAM ITSELF IS PASSED TO THE RESOLVER SO THAT EACH RESOLVER
+         CAN READ CUSTOM OPTIONS 
+      */
+      return new ResolverModule(program);
     });
   }
-
-  resolvers = resolvers.map(function (resolverPath) {
-    var loadPath = path.resolve(path.join(path.dirname(resolverPath), path.basename(resolverPath, path.extname(resolverPath)))),
-      ResolverModule = require(loadPath);
-    /* 
-       THE PROGRAM ITSELF IS PASSED TO THE RESOLVER SO THAT EACH RESOLVER
-       CAN READ CUSTOM OPTIONS 
-    */
-    return new ResolverModule(program);
-  });
-
 } catch (err) {
   console.log('\nDependencies Analyzer v' + version);
   console.log('****************************');

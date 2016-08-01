@@ -1,6 +1,6 @@
 {
   "name": "dependencies-analyzer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A module for checking node dependencies transitively",
   "main": "index.js",
   "repository": {
