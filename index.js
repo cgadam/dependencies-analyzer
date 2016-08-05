@@ -42,7 +42,7 @@ var fs = require('fs'),
 function loadResolvers() {
   var Resolvers = {};
   Resolvers.BaseResolver = require('./lib/resolvers/base/base-resolver');
-  var files = fs.readdirSync('./lib/resolvers');
+  var files = fs.readdirSync(path.join(__dirname, 'lib', 'resolvers'));
   for (var i = 0, len = files.length; i < len; i++) {
     var file = files[i];
     if (path.extname(file) === '.js') {
@@ -55,5 +55,6 @@ function loadResolvers() {
 
 module.exports = {
   DependencyAnalyzer: require('./lib/dependencies-analyzer.js'),
-  Resolvers: loadResolvers()
+  Resolvers: loadResolvers(),
+  Dependency: require('./lib/dependencies/dependency.js')
 };

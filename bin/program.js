@@ -107,12 +107,10 @@ function getFilesList(programOption, opts) {
   return filesList;
 }
 
-var requireRegExp,
-  primaryFiles,
+var primaryFiles,
   resolvers;
 
 try {
-  requireRegExp = program.requireRegexp || '[^.]require\\(["\']([^\\)]+)["\']\\)';
   primaryFiles = getFilesList(program.files, {
     errorMsg: 'Entry files need to be provided for the analysis ' +
       'with a comma-separated list of paths: ' +
@@ -147,7 +145,9 @@ try {
   process.exit(1);
 }
 
-var analyzer = new DependencyAnalyzer(primaryFiles, requireRegExp, resolvers);
+var analyzer = new DependencyAnalyzer(primaryFiles, resolvers, {
+  requireRegexp: program.requireRegexp
+});
 analyzer.analyze();
 
 console.log(JSON.stringify(analyzer.getDependenciesResult(), null, 2));

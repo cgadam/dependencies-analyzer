@@ -1,6 +1,6 @@
 {
   "name": "dependencies-analyzer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A module for checking node dependencies transitively",
   "main": "index.js",
   "repository": {
@@ -21,7 +21,8 @@
     "analysis",
     "transitive",
     "tree",
-    "optimization"
+    "optimization",
+    "manipulation"
   ],
   "dependencies": {
     "commander": "2.9.0",
