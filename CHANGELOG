@@ -4,4 +4,11 @@ v0.0.1:
     - First release. Includes the following by-default resolvers:
       * PathResolver
       * NodeResolver
+
+v0.0.4
+  Date: 2016-08-05
+  Changes:
+    - API improvements. Make the require "regexp" to be optional
+    when creating a new Analyzer.
+    - Paths usage improved.
         
